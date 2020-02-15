@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/topBarStyle.css">
+    <link rel="stylesheet" href="styles/NavBar.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <script src="renderer.js"></script>
+    <title>RoLauncher</title>
+
+        <!--Top bar-->
+        <div class="topbar">
+            <div class="close" onclick="Close()">
+              <svg name="TitleBarClose" aria-hidden="false" width="12" height="12" viewBox="0 0 12 12"><polygon fill="currentColor" fill-rule="evenodd" points="11 1.576 6.583 6 11 10.424 10.424 11 6 6.583 1.576 11 1 10.424 5.417 6 1 1.576 1.576 1 6 5.417 10.424 1"></polygon></svg>
+            </div>
+            <div class="screen" onclick="maximize()">
+              <svg name="TitleBarMaximize" aria-hidden="false" width="12" height="12" viewBox="0 0 12 12"><rect width="9" height="9" x="1.5" y="1.5" fill="none" stroke="currentColor"></rect></svg>
+            </div>
+            <div onclick="minimize()" class="minimize">
+              <svg name="TitleBarMinimize" aria-hidden="false" width="12" height="12" viewBox="0 0 12 12"><rect fill="currentColor" width="10" height="1" x="1" y="6"></rect></svg>
+            </div>
+            <span class="title-topbar"><strong>RoLauncher</strong></span>
+        </div>
+</head>
+
+
+<body>
+
+      <!--NavBar-->
+      <nav>
+        <div class="navBar">
+            <div ><a href="#">Home</a></div>
+            <div><a href="#">Sites</a></div>
+            <div><a href="settings.html">Options</a></div> 
+        </div>
+      </nav>
+      <!--Home Page-->
+      <div class="home-page">
+        <div class="parent">
+            <div class="roblox"> 
+                <div class="frame">
+                    <img src="Assets/Imgs/Roblox-logo.png" alt="ROBLOX">
+                    <h5>ROBLOX</h5>
+                    <button onclick="openRoblox(false)" class="open" title="Open Roblox"><strong>open</strong></button>
+                    <button onclick="openRoblox(true)" class="site" title="Go to roblox.com"><strong>Go to roblox.com</strong></button>
+                </div>
+            </div>
+            <div class="robloxStudio"> 
+              <div class="frame">
+                <img src="Assets/Imgs/Roblox-studio-logo.png" alt="ROBLOX STUDIO">
+                <h5>ROBLOX STUDIO</h5>
+                <button onclick="openRobloxStudio(false)" class="open" title="Open Studio"><strong>open</strong></button>
+                <button onclick="openRobloxStudio(true)"class="site" title="Go to roblox.com"><strong>Go to roblox.com</strong></button>
+              </div>
+            </div>
+      </div>
+      <script>
+        var {BrowserWindow} = require('electron').remote
+        var win = BrowserWindow.getFocusedWindow();
+  
+
+        //var Maximized = false
+        function maximize(){
+          var win = BrowserWindow.getFocusedWindow();
+          if (win.isMaximized() != true){
+            win.maximize();
+          }else{
+            win.unmaximize();
+          }
+        }
+  
+        function minimize(){
+          var win = BrowserWindow.getFocusedWindow();
+          win.minimize();
+        }
+  
+        function Close(){
+          var win = BrowserWindow.getFocusedWindow();
+          if(Config.CloseButton){
+            win.hide();
+            return
+          }
+          win.close();
+        }
+    </script>
+     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+</body>
+</html>
